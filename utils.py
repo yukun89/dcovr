@@ -10,12 +10,6 @@ import os
 import re
 import sys
 
-# iZip is only available in 2.x
-try:
-    from itertools import izip as zip
-except ImportError:
-    pass
-
 
 def resolve_symlinks(orig_path):
     """
@@ -160,29 +154,6 @@ def search_file(expr, path, exclude_dirs):
                 else:
                     ans.append(os.path.abspath(name))
     return ans
-
-
-def commonpath(files):
-    if len(files) == 1:
-        return os.path.join(os.path.relpath(os.path.split(files[0])[0]), '')
-
-    common_path = os.path.realpath(files[0])
-    common_dirs = common_path.split(os.path.sep)
-
-    for filepath in files[1:]:
-        path = os.path.realpath(filepath)
-        dirs = path.split(os.path.sep)
-        common = []
-        for a, b in zip(dirs, common_dirs):
-            if a == b:
-                common.append(a)
-            elif common:
-                common_dirs = common
-                break
-            else:
-                return ''
-
-    return os.path.join(os.path.relpath(os.path.sep.join(common_dirs)), '')
 
 
 #
