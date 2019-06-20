@@ -1,10 +1,12 @@
+dcov is a tool to get increment code coverage report from gcovr report.
+
 ## Install
 
 sudo pip install .
 
 ## Uninstall
 
-sudo pip uninstall dcovr
+sudo pip uninstall dcovr. or python setup.py install
 
 ## Usage
 
